@@ -1,11 +1,17 @@
 import React from 'react'
 import {StyleSheet, TouchableOpacity, Text, Image} from 'react-native';
-
+import {Card} from 'react-native-elements'
 export default function ItemDetails({ pressHandler, item }) {
+
+//import pic from '../assets/images/favicon.png'
+
   return (
 
-    <TouchableOpacity onPress={() => pressHandler(item.key)}>
-      <Text style={styles.item}>{item.waste}</Text>
+    <TouchableOpacity onPress={() => pressHandler(item.key)}>			
+      <Card containerStyle={styles.item}>
+	 <Card.Title>{item.waste}</Card.Title>
+	  <Card.Divider/>
+		</Card>
     </TouchableOpacity>
   )
 }
