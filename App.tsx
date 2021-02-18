@@ -1,5 +1,6 @@
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, FlatList, Alert, TouchableOpacity, Keyboard, Button, Image } from 'react-native';
+import { StyleSheet, View, Text} from 'react-native';
 
 import Header from './components/Header';
 import ItemDetails from './components/ItemDetails';

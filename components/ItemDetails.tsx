@@ -1,22 +1,26 @@
 import React from 'react'
-import {StyleSheet, TouchableOpacity, Text} from 'react-native';
+import {StyleSheet, TouchableOpacity, Text, Image} from 'react-native';
 
 export default function ItemDetails({ pressHandler, item }) {
   return (
+
     <TouchableOpacity onPress={() => pressHandler(item.key)}>
-      <Text style={styles.item}>{item.text}</Text>
+      <Text style={styles.item}>{item.waste}</Text>
     </TouchableOpacity>
   )
 }
 
 const styles = StyleSheet.create({
   item: {
-    padding: 16,
-    marginTop: 16,
-    borderColor: '#bbb',
-    borderWidth: 1,
-    borderStyle: "dashed",
-    borderRadius: 10,
-    
-  }
+		flex: 1,
+		flexDirection: 'column',
+		justifyContent: 'space-around',
+		marginHorizontal: 5,
+		marginVertical: 5,
+		paddingHorizontal: 10,
+		paddingBottom: 200,
+		alignContent: 'center',
+		fontSize: 20,
+		backgroundColor: '#fff',
+	}
 });

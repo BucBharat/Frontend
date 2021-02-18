@@ -1,12 +1,28 @@
-import { StyleSheet, View, Text, FlatList, Alert, TouchableWithoutFeedback, Keyboard, Button } from 'react-native';
-
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import {
+	StyleSheet,
+	View,
+	Text,
+	FlatList,	
+	Alert,
+	TouchableOpacity,
+	Keyboard,
+	Button,
+	Image
+} from 'react-native';
 import React from 'react';
-
-export default function Header() {
+import {Header} from 'react-native-elements'
+export default function MyHeader() {
   return (
-		<View style = {styles.header}>
-    <Text style = {styles.title}> My Items </Text>
-    </View>
+    
+		<Header
+  		leftComponent={{ icon: 'menu', color: '#fff' }}
+  		centerComponent={{ text: 'REUSE', style: {fontSize: 20, color: '#fff' } }}
+  		rightComponent={{ icon: 'home', color: '#fff' }}
+      backgroundColor='#09f'
+      barStyle='light-content'
+      containerStyle = {styles.header}
+		/>
   );
 }
 
@@ -16,7 +32,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     paddingVertical: 20,
     paddingHorizontal: 20,
-    backgroundColor: 'coral',
 	},
 	title: {
     textAlign: 'center',

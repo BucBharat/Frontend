@@ -1,3 +1,5 @@
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+
 import React, { useState } from 'react';
 import {
 	StyleSheet,
@@ -10,13 +12,13 @@ import {
 	Button,
 	Image
 } from 'react-native';
- import {
+
+import {
 	Icon
  } from 'react-native-elements'
-//import {icon} from 'antd'
-import Header from './Header';
-import ItemDetails from './ItemDetails';
 
+import MyHeader from './Header';
+import ItemDetails from './ItemDetails';
 
 
 export default function MyItems() {
@@ -35,27 +37,25 @@ export default function MyItems() {
 	]
 	);
 
-	const displayItem = (id: number) => {
-		<Text>Display details of {id} </Text>
+	const displayItem = (id: string) => {
+		Alert.alert('Inside displayItem()');
 	}
 
 	const addItemHandler = () => {
-
+		Alert.alert('Inside addItemHandler()');
 	}
 
 	return (
+		<SafeAreaProvider>
 		<View style={styles.container}>
-			<Header />
+			<MyHeader />
 			<View style={styles.content}>
-
+				<Text> My Items </Text>
 				<View style={styles.list}>
 					<FlatList
 						data={myItems}
 						renderItem = {({item}) => (
-							<TouchableOpacity /*onPress={() => pressHandler(item.key)}*/>
-      							<Text style={styles.item}> {item.waste}</Text>
-    						</TouchableOpacity>
-				//			<ItemDetails item={item} /*pressHandler={displayItem}*/ />
+							<ItemDetails item={item} pressHandler={displayItem} />
 						)}
 					/>
 				</View>
@@ -63,14 +63,17 @@ export default function MyItems() {
 				
         	    
                 <Icon 
-                name='add' 
-                type='material' 
                 reverse
+				name='add' 
+                type='material' 
+                size= {30}
                 color='#f50'
+				onPress={addItemHandler}
 				containerStyle={styles.buttonContainer} />
              
 			</View>
 		</View>
+		</SafeAreaProvider>
 	);
 }
 
@@ -79,23 +82,23 @@ const styles = StyleSheet.create({
 		flex: 1,
 		marginHorizontal: 5,
 		marginTop: 20,
-		marginBottom: 5,
-		//backgroundColor: 'blue',
+		marginBottom: 0,
+	//	backgroundColor: 'cyan',
 	},
 	content: {
 		flex: 1,
 		marginHorizontal: 10,
-		marginTop: 5,
+		marginTop: 0,
 		marginBottom: 10,
 		paddingHorizontal: 5,
 		paddingVertical: 10,
-		//backgroundColor: 'pink'
+	//	backgroundColor: 'pink'
 	},
 	list: {
 		flex: 1,
 		marginTop: 10,
 		marginBottom: 10,
-		backgroundColor: '#dad'
+	//	backgroundColor: 'pink'
 	},
 	buttonContainer: {
 		height: 70,
@@ -103,23 +106,8 @@ const styles = StyleSheet.create({
 		bottom: 60,
 		right: 30,
 		position: 'absolute',
-		backgroundColor: '#000',
 		alignContent: 'center',
-		fontSize: 10,
-		borderRadius: 100,
+		fontSize: 60,
 	},
-	item: {
-		flex: 1,
-		flexDirection: 'column',
-		justifyContent: 'space-around',
-		marginHorizontal: 5,
-		marginVertical: 5,
-		paddingHorizontal: 10,
-		paddingBottom: 200,
-		alignContent: 'center',
-		fontSize: 20,
-		backgroundColor: '#fff',
-
-	}
 });
 
