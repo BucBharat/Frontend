@@ -1,16 +1,18 @@
 import React from 'react'
 import {StyleSheet, TouchableOpacity, Text, Image} from 'react-native';
 import {Card} from 'react-native-elements'
+import pic from '../assets/images/favicon.png';
+//const pic = '../assets/images/favicon.png';
 export default function ItemDetails({ pressHandler, item }) {
 
-//import pic from '../assets/images/favicon.png'
-
   return (
-
-    <TouchableOpacity onPress={() => pressHandler(item.key)}>			
-      <Card containerStyle={styles.item}>
-	 <Card.Title>{item.waste}</Card.Title>
-	  <Card.Divider/>
+  <TouchableOpacity onPress={() => pressHandler(item.key)}>			
+	<Card containerStyle={styles.item}>
+	<Card.Title>{item.waste}</Card.Title>
+		<Card.Divider/>
+		<Card.Image containerStyle = {styles.image} source = {require('../assets/images/favicon.png')} resizeMode = 'contain' />
+		
+		
 		</Card>
     </TouchableOpacity>
   )
@@ -28,5 +30,9 @@ const styles = StyleSheet.create({
 		alignContent: 'center',
 		fontSize: 20,
 		backgroundColor: '#fff',
+	},
+    image: {
+		flex: 1,
+		justifyContent: 'flex-start'
 	}
 });

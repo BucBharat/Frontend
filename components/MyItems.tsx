@@ -19,9 +19,9 @@ import {
 
 import MyHeader from './Header';
 import ItemDetails from './ItemDetails';
+import AddItem from './AddItem';
 
-
-export default function MyItems() {
+export default function MyItems({navigation}) {
 	const [myItems, setMyItems] = useState([
 		{ waste: 'plastic item 1', key: '1' },
 		{ waste: 'paper item 1' , key: '2' },
@@ -42,8 +42,16 @@ export default function MyItems() {
 	}
 
 	const addItemHandler = () => {
-		Alert.alert('Inside addItemHandler()');
+		navigation.navigate('AddItem',myItems)
+    // 	   <AddItem submitHandler={submitHandler}/>
+		// Alert.alert('Inside addItemHandler()');
 	}
+
+	const submitHandler = () => {
+		
+		Alert.alert('Inside submitHandler()');
+	}
+	
 
 	return (
 		<SafeAreaProvider>
