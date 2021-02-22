@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, TextInput,  Text, Alert, Picker } from 'react-native';
+import { StyleSheet, View, TextInput,  Text, Alert, Picker, ActionSheetIOS } from 'react-native';
 import {Formik} from 'formik'
 import Button from '../components/Button'
 import AddItemsForm from '../components/AddItemsForm'
 
 
-export default function AddItem({navigation}) {
+export default function AddItem({ addReview,settingModalOpen}) {
   const [text, setText] = useState('');
 
   const changeHandler = (val) => {
@@ -15,11 +15,13 @@ export default function AddItem({navigation}) {
   return (
     <View>
       <Formik
-      initialValues={{wasteName : '',weight:''}}
+      initialValues={{wasteName : 'Scrap Metal',weight:''}}
       onSubmit = {
-        (values) => {
+        (values,actions) => {
+          // actions.resetForm(); 
+          addReview(values);
           console.log(values)
-          Alert.alert('Submitted')
+          // modalOpen = false
         }
       }
       >
@@ -38,7 +40,7 @@ export default function AddItem({navigation}) {
             mode = 'dropdown'
             // value = {props.values.wasteName}
             >
-              <Picker.Item label="Scrap Metal" value="Scrap metal"/>
+              <Picker.Item label="Scrap Metal" value="Scrap Metal"/>
               <Picker.Item label="Newspaper" value="Newspaper"/>
               <Picker.Item label="Plastic" value="Plastic"/>
            </Picker>
@@ -57,7 +59,7 @@ export default function AddItem({navigation}) {
               style = {{width : '20%'}}
               mode="outlined"
               onPress={props.handleSubmit}
-              height = '30'
+             // height = '30'
               compact = 'true'
               >
               Cancel
@@ -67,7 +69,7 @@ export default function AddItem({navigation}) {
               style = {{width : '20%'}}
               mode="contained"
               onPress={props.handleSubmit}
-              height = '30'
+              //height = '30'
               compact = 'true'
               >
               Submit
@@ -76,8 +78,15 @@ export default function AddItem({navigation}) {
             <Button
               style = {{width : '20%'}}
               mode="outlined"
-              onPress={props.handleSubmit}
-              height = '30'
+              onPress={() => {
+                addReview(props.values)
+                console.log(props.values)
+                props.values.wasteName = "Scrap Metal"
+                props.values.weight = ""
+                settingModalOpen()
+                // modalOpen = false
+              }}
+              //height = '30'
               compact = 'true'
               >
               Add

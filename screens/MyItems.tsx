@@ -10,8 +10,12 @@ import {
 	TouchableOpacity,
 	Keyboard,
 	Button,
-	Image
+	Image,
+	Modal,
+	TouchableWithoutFeedback,
+	Pressable
 } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
 
 import {
 	Icon
@@ -22,6 +26,7 @@ import ItemDetails from './ItemDetails';
 import AddItem from './AddItem';
 
 export default function MyItems({navigation}) {
+	const [modalOpen,setModalOpen] = useState(false)
 	const [myItems, setMyItems] = useState([
 		{ waste: 'plastic item 1', weight: '2', key: '1' },
 		{ waste: 'paper item 1' , weight: '2', key: '2' },
@@ -36,25 +41,65 @@ export default function MyItems({navigation}) {
 		{ waste: 'metal item 3', weight: '2', key: '9' },
 	]
 	);
+	const [reviews, setReviews] = useState([{ waste: 'plastic item 1', weight: '2', key: '1' },
+	{ waste: 'paper item 1' , weight: '2', key: '2' },
+	{ waste: 'metal item 1', weight: '2', key: '3' },
+
+	{ waste: 'plastic item 2', weight: '2',key: '4' },
+	{ waste: 'paper item 2', weight: '2', key: '5' },
+	{ waste: 'metal item 2',weight: '2',  key: '6' },
+
+	{ waste: 'plastic item 3', weight: '2', key: '7' },
+	{ waste: 'paper item 3', weight: '2', key: '8' },
+	{ waste: 'metal item 3', weight: '2', key: '9' }])
 
 	const displayItem = (id: string) => {
 		Alert.alert('Inside displayItem()');
 	}
 
 	const addItemHandler = () => {
-		navigation.navigate('AddItem',myItems)
+		navigation.navigate('AddItem',formItems)
 	}
 
 	const submitHandler = () => {
 		
 		Alert.alert('Inside submitHandler()');
 	}
+
+
+	const addReview = (review) => {
+		review.key = Math.random().toString();
+		setReviews((currentReviews) => {
+		  return [review, ...currentReviews];
+		});
+		setModalOpen(false);
+	  };
 	
+	const settingModalOpen = () => {
+		setModalOpen(true)
+		// console.log(modalOpen)
+	}
 
 	return (
-		<SafeAreaProvider>
+		
 		<View style={styles.container}>
+		<Modal visible={modalOpen} animationType='slide' >
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <View style={styles.modalContent}>
+            <MaterialIcons 
+              name='close'
+              size={24} 
+              style={{...styles.modalToggle, ...styles.modalClose}} 
+              onPress={() => setModalOpen(false)}  
+            />
+            <AddItem  addReview={addReview} settingModalOpen={settingModalOpen}/>
+          </View>
+        </TouchableWithoutFeedback>
+      	</Modal>
+
+
 			<MyHeader />
+			<Text style={styles.textStyle}>{modalOpen}</Text>
 			<View style={styles.content}>
 				<Text> My Items </Text>
 				<View style={styles.list}>
@@ -68,18 +113,16 @@ export default function MyItems({navigation}) {
                 
 				
         	    
-                <Icon 
-                reverse
-				name='add' 
-                type='material' 
-                size= {30}
-                color='#f50'
-				onPress={addItemHandler}
-				containerStyle={styles.buttonContainer} />
+                <MaterialIcons
+				reverse 
+                name='add' 
+				size={24} 
+				style={styles.modalToggle}
+				onPress={() => setModalOpen(true)}  />
              
 			</View>
 		</View>
-		</SafeAreaProvider>
+		
 	);
 }
 
@@ -115,5 +158,35 @@ const styles = StyleSheet.create({
 		alignContent: 'center',
 		fontSize: 60,
 	},
+	modalToggle: {
+		justifyContent: 'center',
+		alignItems: 'center',
+		marginBottom: 10,
+		borderWidth: 1,
+		borderColor: '#f2f2f2',
+		padding: 10,
+		borderRadius: 10,
+		alignSelf: 'center',
+	  },
+	  modalClose: {
+		marginTop: 20,
+		marginBottom: 0,
+	  },
+	  modalContent: {
+		flex: 1,
+	  },
+	  button: {
+		borderRadius: 20,
+		padding: 10,
+		elevation: 2
+	  },
+	  buttonClose: {
+		backgroundColor: "#2196F3",
+	  },
+	  textStyle: {
+		color: "white",
+		fontWeight: "bold",
+		textAlign: "center"
+	  },
 });
 
