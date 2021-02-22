@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, TextInput, Button, Text, Alert, Picker } from 'react-native';
+import { StyleSheet, View, TextInput,  Text, Alert, Picker } from 'react-native';
 import {Formik} from 'formik'
-import {
-  Dropdown }
-  from 'react-native-material-dropdown';
+import Button from '../components/Button'
+import AddItemsForm from '../components/AddItemsForm'
+
 
 export default function AddItem({navigation}) {
   const [text, setText] = useState('');
@@ -26,12 +26,8 @@ export default function AddItem({navigation}) {
         {(props) => (
 
           <View>
-            {/* <TextInput 
-            style = {{padding : 10,borderWidth : 1,borderColor : '#ddd',fontSize : 18,borderRadius : 6}}
-            placeholder='Waste name'
-            onChangeText = {props.handleChange('wasteName')}
-            value = {props.values.wasteName}
-            /> */}
+            
+            {/* <AddItemsForm props={prop/> */}
             <Picker 
             style = {{padding : 10,borderWidth : 1,borderColor : '#ddd',fontSize : 18,borderRadius : 6}}
             
@@ -46,6 +42,7 @@ export default function AddItem({navigation}) {
               <Picker.Item label="Newspaper" value="Newspaper"/>
               <Picker.Item label="Plastic" value="Plastic"/>
            </Picker>
+
             <TextInput 
             style = {{padding : 10,borderWidth : 1,borderColor : '#ddd',fontSize : 18,borderRadius : 6}}
             placeholder='Weight in kg'
@@ -53,7 +50,40 @@ export default function AddItem({navigation}) {
             value = {props.values.weight}
             keyboardType = "numeric"
             />
-            <Button title='submit' color='maroon' onPress={props.handleSubmit}/>
+        
+            <View style={styles.buttons}>
+        
+            <Button
+              style = {{width : '20%'}}
+              mode="outlined"
+              onPress={props.handleSubmit}
+              height = '30'
+              compact = 'true'
+              >
+              Cancel
+            </Button>
+        
+            <Button
+              style = {{width : '20%'}}
+              mode="contained"
+              onPress={props.handleSubmit}
+              height = '30'
+              compact = 'true'
+              >
+              Submit
+            </Button>
+            
+            <Button
+              style = {{width : '20%'}}
+              mode="outlined"
+              onPress={props.handleSubmit}
+              height = '30'
+              compact = 'true'
+              >
+              Add
+            </Button>
+            
+            </View>
           </View>
         )}
       </Formik>
@@ -69,4 +99,10 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#ddd',
   },
+  buttons: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems : 'center'
+
+  }
 });

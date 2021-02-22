@@ -28,7 +28,6 @@ const LoginScreen = ({ navigation }) => {
     //   routes: [{ name: 'Dashboard' }],
     // })
     navigation.navigate('MyItems')
-
   }
 
   return (

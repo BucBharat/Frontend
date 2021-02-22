@@ -19,7 +19,7 @@ import {
 
 import MyHeader from './Header';
 import ItemDetails from './ItemDetails';
-import AddItem from '../components/AddItem';
+import AddItem from './AddItem';
 
 export default function MyItems({navigation}) {
 	const [myItems, setMyItems] = useState([

@@ -5,7 +5,7 @@ import { StyleSheet, View, Text} from 'react-native';
 import Header from './screens/Header';
 import ItemDetails from './components/ItemDetails';
 import MyItems from './screens/MyItems';
-import AddTodo from './components/AddItem'
+import AddTodo from './screens/AddItem'
 import {Alert} from 'react-native';
 import Navigator from './Routes/homeStack'
 

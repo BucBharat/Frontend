@@ -2,7 +2,7 @@ import { createStackNavigator} from 'react-navigation-stack';
 import {createAppContainer} from 'react-navigation';
 import MyItems from '../screens/MyItems';
 import ItemDetails from '../screens/ItemDetails';
-import AddItem from '../components/AddItem';
+import AddItem from '../screens/AddItem';
 import StartScreen from '../screens/StartScreen'
 import RegisterScreen from '../screens/RegisterScreen'
 // import { RegisterScreen } from '../screens';
