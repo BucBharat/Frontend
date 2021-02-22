@@ -41,17 +41,17 @@ export default function MyItems({navigation}) {
 		{ waste: 'metal item 3', weight: '2', key: '9' },
 	]
 	);
-	const [reviews, setReviews] = useState([{ waste: 'plastic item 1', weight: '2', key: '1' },
-	{ waste: 'paper item 1' , weight: '2', key: '2' },
-	{ waste: 'metal item 1', weight: '2', key: '3' },
+	const [reviews, setReviews] = useState([{ wasteName: 'plastic item 1', weight: '2', key: '1' },
+	{ wasteName: 'paper item 1' , weight: '2', key: '2' },
+	{ wasteName: 'metal item 1', weight: '2', key: '3' },
 
-	{ waste: 'plastic item 2', weight: '2',key: '4' },
-	{ waste: 'paper item 2', weight: '2', key: '5' },
-	{ waste: 'metal item 2',weight: '2',  key: '6' },
+	{ wasteName: 'plastic item 2', weight: '2',key: '4' },
+	{ wasteName: 'paper item 2', weight: '2', key: '5' },
+	{ wasteName: 'metal item 2',weight: '2',  key: '6' },
 
-	{ waste: 'plastic item 3', weight: '2', key: '7' },
-	{ waste: 'paper item 3', weight: '2', key: '8' },
-	{ waste: 'metal item 3', weight: '2', key: '9' }])
+	{ wasteName: 'plastic item 3', weight: '2', key: '7' },
+	{ wasteName: 'paper item 3', weight: '2', key: '8' },
+	{ wasteName: 'metal item 3', weight: '2', key: '9' }])
 
 	const displayItem = (id: string) => {
 		Alert.alert('Inside displayItem()');
@@ -69,6 +69,7 @@ export default function MyItems({navigation}) {
 
 	const addReview = (review) => {
 		review.key = Math.random().toString();
+		// console.log(review)
 		setReviews((currentReviews) => {
 		  return [review, ...currentReviews];
 		});
@@ -104,7 +105,7 @@ export default function MyItems({navigation}) {
 				<Text> My Items </Text>
 				<View style={styles.list}>
 					<FlatList
-						data={myItems}
+						data={reviews}
 						renderItem = {({item}) => (
 							<ItemDetails item={item} pressHandler={displayItem} />
 						)}
