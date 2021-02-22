@@ -23,17 +23,17 @@ import AddItem from './AddItem';
 
 export default function MyItems({navigation}) {
 	const [myItems, setMyItems] = useState([
-		{ waste: 'plastic item 1', key: '1' },
-		{ waste: 'paper item 1' , key: '2' },
-		{ waste: 'metal item 1', key: '3' },
+		{ waste: 'plastic item 1', weight: '2', key: '1' },
+		{ waste: 'paper item 1' , weight: '2', key: '2' },
+		{ waste: 'metal item 1', weight: '2', key: '3' },
 
-		{ waste: 'plastic item 2', key: '4' },
-		{ waste: 'paper item 2',  key: '5' },
-		{ waste: 'metal item 2',  key: '6' },
+		{ waste: 'plastic item 2', weight: '2',key: '4' },
+		{ waste: 'paper item 2', weight: '2', key: '5' },
+		{ waste: 'metal item 2',weight: '2',  key: '6' },
 
-		{ waste: 'plastic item 3',  key: '7' },
-		{ waste: 'paper item 3', key: '8' },
-		{ waste: 'metal item 3',  key: '9' },
+		{ waste: 'plastic item 3', weight: '2', key: '7' },
+		{ waste: 'paper item 3', weight: '2', key: '8' },
+		{ waste: 'metal item 3', weight: '2', key: '9' },
 	]
 	);
 

@@ -10,6 +10,7 @@ export default function ItemDetails({ pressHandler, item }) {
 	<Card containerStyle={styles.item}>
 	<Card.Title>{item.waste}</Card.Title>
 		<Card.Divider/>
+		<Text> {item.weight} </Text>
 		<Card.Image containerStyle = {styles.image} source = {require('../assets/images/favicon.png')} resizeMode = 'contain' />
 		
 		
