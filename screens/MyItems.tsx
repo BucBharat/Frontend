@@ -19,7 +19,7 @@ import {
 
 import MyHeader from './Header';
 import ItemDetails from './ItemDetails';
-import AddItem from './AddItem';
+import AddItem from '../components/AddItem';
 
 export default function MyItems({navigation}) {
 	const [myItems, setMyItems] = useState([
@@ -43,8 +43,6 @@ export default function MyItems({navigation}) {
 
 	const addItemHandler = () => {
 		navigation.navigate('AddItem',myItems)
-    // 	   <AddItem submitHandler={submitHandler}/>
-		// Alert.alert('Inside addItemHandler()');
 	}
 
 	const submitHandler = () => {
