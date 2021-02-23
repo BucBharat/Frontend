@@ -28,8 +28,6 @@ export default function AddItem({ addReview,settingModalOpen}) {
         {(props) => (
 
           <View>
-            
-            {/* <AddItemsForm props={prop/> */}
             <Picker 
             style = {{padding : 10,borderWidth : 1,borderColor : '#ddd',fontSize : 18,borderRadius : 6}}
             
@@ -58,7 +56,7 @@ export default function AddItem({ addReview,settingModalOpen}) {
             <Button
               style = {{width : '20%'}}
               mode="outlined"
-              onPress={props.handleSubmit}
+              onPress={() => settingModalOpen(false)}
              // height = '30'
               compact = 'true'
               >
@@ -83,7 +81,7 @@ export default function AddItem({ addReview,settingModalOpen}) {
                 weight1 = props.values.weight
                 addReview({wasteName : wastename1,weight : weight1})
                 console.log(props.values)                
-                settingModalOpen()
+                settingModalOpen(true)
                 
                 props.values.wasteName = "Scrap Metal"
                 props.values.weight = ""

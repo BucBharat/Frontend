@@ -76,8 +76,8 @@ export default function MyItems({navigation}) {
 		setModalOpen(false);
 	  };
 	
-	const settingModalOpen = () => {
-		setModalOpen(true)
+	const settingModalOpen = (value : boolean) => {
+		setModalOpen(value)
 		// console.log(modalOpen)
 	}
 
