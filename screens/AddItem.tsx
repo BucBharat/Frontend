@@ -7,7 +7,7 @@ import AddItemsForm from '../components/AddItemsForm'
 
 export default function AddItem({ addReview,settingModalOpen}) {
   const [text, setText] = useState('');
-
+  let wastename1,weight1
   const changeHandler = (val) => {
     setText(val);
 
@@ -18,7 +18,7 @@ export default function AddItem({ addReview,settingModalOpen}) {
       initialValues={{wasteName : 'Scrap Metal',weight:''}}
       onSubmit = {
         (values,actions) => {
-          // actions.resetForm(); 
+          actions.resetForm(); 
           addReview(values);
           console.log(values)
           // modalOpen = false
@@ -79,12 +79,17 @@ export default function AddItem({ addReview,settingModalOpen}) {
               style = {{width : '20%'}}
               mode="outlined"
               onPress={() => {
-                addReview(props.values)
-                console.log(props.values)
+                wastename1 = props.values.wasteName
+                weight1 = props.values.weight
+                addReview({wasteName : wastename1,weight : weight1})
+                console.log(props.values)                
+                settingModalOpen()
+                
                 props.values.wasteName = "Scrap Metal"
                 props.values.weight = ""
-                settingModalOpen()
-                // modalOpen = false
+                
+                
+
               }}
               //height = '30'
               compact = 'true'
