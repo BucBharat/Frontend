@@ -1,13 +1,15 @@
 import React from 'react'
-import {StyleSheet, TouchableOpacity, Text, Image} from 'react-native';
+import {StyleSheet, TouchableNativeFeedback, Text, Image} from 'react-native';
 // import {Card} from 'react-native-elements'
 import { Card, CardTitle, CardContent, CardAction, CardButton, CardImage } from 'react-native-material-cards'
 import pic from '../assets/images/favicon.png';
 import Product from '../components/Product'
 //const pic = '../assets/images/favicon.png';
 export default function ItemDetails({ pressHandler, item }) {
-
-  return (
+	// const cardTouchHandler = () => {
+	// 	console.log("Card touched")
+	// }
+  return (		
 		<Product product={item} horizontal />
   )
 }

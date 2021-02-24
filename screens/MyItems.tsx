@@ -173,11 +173,12 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		// marginBottom: 10,
 		borderWidth: 3,
-		borderColor: 'black',
+		borderColor: 'white',
 		padding: 10,
 		borderRadius: 30,
 		alignSelf: 'center',
-		backgroundColor : 'orange'
+		backgroundColor : '#99738E',
+		
 	  },
 	  modalClose: {
 		marginTop: 20,
