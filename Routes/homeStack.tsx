@@ -12,7 +12,10 @@ import { Dashboard, ForgotPasswordScreen } from '../screens';
 
 const screens = {
     StartScreen : {
-        screen : StartScreen
+        screen : StartScreen,
+        navigationOptions: {
+            header: null
+          }
     },
     RegisterScreen : {
         screen : RegisterScreen
@@ -27,7 +30,10 @@ const screens = {
         screen : Dashboard
     },
     MyItems: {
-        screen: MyItems
+        screen: MyItems,
+        navigationOptions: {
+            header: null
+          }
     },
     AddItem: {
         screen: AddItem

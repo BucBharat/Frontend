@@ -9,13 +9,16 @@ import {
 	Alert,
 	TouchableOpacity,
 	Keyboard,
-	Button,
+	
 	Image,
 	Modal,
 	TouchableWithoutFeedback,
 	Pressable
 } from 'react-native';
+import Button from '../components/Button';
+import {Block} from 'galio-framework';
 import { MaterialIcons } from '@expo/vector-icons';
+import Background from '../components/Background'
 
 import {
 	Icon
@@ -24,6 +27,7 @@ import {
 import MyHeader from './Header';
 import ItemDetails from './ItemDetails';
 import AddItem from './AddItem';
+import Header from '../components/Header'
 
 export default function MyItems({navigation}) {
 	const [modalOpen,setModalOpen] = useState(false)
@@ -100,29 +104,34 @@ export default function MyItems({navigation}) {
 
 
 			<MyHeader />
-			<Text style={styles.textStyle}>{modalOpen}</Text>
 			<View style={styles.content}>
-				<Text> My Items </Text>
-				<View style={styles.list}>
+			{/* <Header>My Items</Header> */}
+				<Block flex>
 					<FlatList
 						data={reviews}
 						renderItem = {({item}) => (
 							<ItemDetails item={item} pressHandler={displayItem} />
 						)}
 					/>
-				</View>
-                
-				
-        	    
+				</Block>
                 <MaterialIcons
 				reverse 
                 name='add' 
 				size={24} 
 				style={styles.modalToggle}
 				onPress={() => setModalOpen(true)}  />
-             
+
+
+			{/* <Button
+              style = {{width : '40%',justifyContent : 'center', alignItems:'center'}}
+              mode="outlined"
+              compact = 'true'
+              >
+              Submit
+            </Button> */}
 			</View>
 		</View>
+
 		
 	);
 }
@@ -130,18 +139,18 @@ export default function MyItems({navigation}) {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		marginHorizontal: 5,
-		marginTop: 20,
+		// marginHorizontal: 5,
+		// marginTop: 20,
 		marginBottom: 0,
 	//	backgroundColor: 'cyan',
 	},
 	content: {
 		flex: 1,
-		marginHorizontal: 10,
-		marginTop: 0,
-		marginBottom: 10,
-		paddingHorizontal: 5,
-		paddingVertical: 10,
+		// marginHorizontal: 10,
+		// marginTop: 0,
+		// marginBottom: 10,
+		// paddingHorizontal: 5,
+		// paddingVertical: 10,
 	//	backgroundColor: 'pink'
 	},
 	list: {
@@ -162,12 +171,13 @@ const styles = StyleSheet.create({
 	modalToggle: {
 		justifyContent: 'center',
 		alignItems: 'center',
-		marginBottom: 10,
-		borderWidth: 1,
-		borderColor: '#f2f2f2',
+		// marginBottom: 10,
+		borderWidth: 3,
+		borderColor: 'black',
 		padding: 10,
-		borderRadius: 10,
+		borderRadius: 30,
 		alignSelf: 'center',
+		backgroundColor : 'orange'
 	  },
 	  modalClose: {
 		marginTop: 20,

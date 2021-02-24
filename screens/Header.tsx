@@ -28,10 +28,10 @@ export default function MyHeader() {
 
 const styles = StyleSheet.create({
 	header: {
-    marginVertical: 10,
-    marginHorizontal: 10,
-    paddingVertical: 20,
-    paddingHorizontal: 20,
+    // marginVertical: 10,
+    // marginHorizontal: 10,
+    // paddingVertical: 20,
+    // paddingHorizontal: 20,
 	},
 	title: {
     textAlign: 'center',
