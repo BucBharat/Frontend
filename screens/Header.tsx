@@ -20,7 +20,7 @@ const MyHeader = (props) => {
   		leftComponent={{ icon: 'menu', color: '#fff' }}
   		centerComponent={{ text: props.title, style: {fontSize: 20, color: '#fff' } }}
   		rightComponent={{ icon: 'home', color: '#fff' }}
-      backgroundColor='#09f'
+      backgroundColor='#560CCE'
       barStyle='light-content'
       containerStyle = {styles.header}
 		/>

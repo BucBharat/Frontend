@@ -14,7 +14,7 @@ const screens = {
     StartScreen : {
         screen : StartScreen,
         navigationOptions: {
-            header: null
+            headerShown: false
           }
     },
     RegisterScreen : {
