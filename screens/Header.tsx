@@ -12,12 +12,13 @@ import {
 } from 'react-native';
 import React from 'react';
 import {Header} from 'react-native-elements'
-export default function MyHeader() {
+
+const MyHeader = (props) => {
   return (
     
 		<Header
   		leftComponent={{ icon: 'menu', color: '#fff' }}
-  		centerComponent={{ text: 'REUSE', style: {fontSize: 20, color: '#fff' } }}
+  		centerComponent={{ text: props.title, style: {fontSize: 20, color: '#fff' } }}
   		rightComponent={{ icon: 'home', color: '#fff' }}
       backgroundColor='#09f'
       barStyle='light-content'
@@ -25,6 +26,8 @@ export default function MyHeader() {
 		/>
   );
 }
+
+export default MyHeader
 
 const styles = StyleSheet.create({
 	header: {
