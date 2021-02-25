@@ -19,6 +19,7 @@ import Button from '../components/Button';
 import {Block} from 'galio-framework';
 import { MaterialIcons } from '@expo/vector-icons';
 import Background from '../components/Background'
+import Product from '../components/Product'
 
 import {
 	Icon
@@ -110,7 +111,7 @@ export default function MyItems({navigation}) {
 					<FlatList
 						data={reviews}
 						renderItem = {({item}) => (
-							<ItemDetails item={item} pressHandler={displayItem} />
+							<Product product={item} horizontal navigation = {navigation}/>
 						)}
 					/>
 				</Block>
@@ -178,7 +179,6 @@ const styles = StyleSheet.create({
 		borderRadius: 30,
 		alignSelf: 'center',
 		backgroundColor : '#99738E',
-		
 	  },
 	  modalClose: {
 		marginTop: 20,

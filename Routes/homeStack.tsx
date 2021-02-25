@@ -7,6 +7,8 @@ import StartScreen from '../screens/StartScreen'
 import RegisterScreen from '../screens/RegisterScreen'
 // import { RegisterScreen } from '../screens';
 import LoginScreen from '../screens/LoginScreen'
+import CardDetails from '../screens/CardDetails'
+import Product from '../components/Product'
 import { Dashboard, ForgotPasswordScreen } from '../screens';
 
 
@@ -15,7 +17,7 @@ const screens = {
         screen : StartScreen,
         navigationOptions: {
             headerShown: false
-          }
+        }
     },
     RegisterScreen : {
         screen : RegisterScreen
@@ -32,8 +34,8 @@ const screens = {
     MyItems: {
         screen: MyItems,
         navigationOptions: {
-            header: null
-          }
+            headerShown: false
+        }
     },
     AddItem: {
         screen: AddItem
@@ -41,7 +43,12 @@ const screens = {
     ItemDetails: {
         screen: ItemDetails
     },
-    
+    CardDetails : {
+        screen: CardDetails,
+        navigationOptions: {
+            headerShown: false
+        }
+    }
     
 }
 
