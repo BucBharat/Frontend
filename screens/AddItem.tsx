@@ -7,7 +7,7 @@ import AddItemsForm from '../components/AddItemsForm'
 
 export default function AddItem({ addReview,settingModalOpen}) {
   const [text, setText] = useState('');
-  let wastename1,weight1
+  let wastename1,weight1,price_per_kg
   const changeHandler = (val) => {
     setText(val);
 
@@ -15,10 +15,16 @@ export default function AddItem({ addReview,settingModalOpen}) {
   return (
     <View>
       <Formik
-      initialValues={{wasteName : 'Scrap Metal',weight:''}}
+      initialValues={{wasteName : 'Scrap Metal',weight: '',price_per_kg : ''}}
       onSubmit = {
         (values,actions) => {
           actions.resetForm(); 
+          if(values.wasteName === 'Scrap Metal')
+            values.price_per_kg = '10'
+          if(values.wasteName === 'Newspaper')
+            values.price_per_kg = '20'
+          if(values.wasteName === 'Plastic')
+            values.price_per_kg = '30'
           addReview(values);
           console.log(values)
           // modalOpen = false
@@ -52,42 +58,42 @@ export default function AddItem({ addReview,settingModalOpen}) {
             />
         
             <View style={styles.buttons}>
-        
+
             <Button
-              style = {{width : '20%'}}
+              style = {{width : '30%'}}
               mode="outlined"
               onPress={() => settingModalOpen(false)}
-             // height = '30'
               compact = 'true'
               >
               Cancel
             </Button>
         
             <Button
-              style = {{width : '20%'}}
+              style = {{width : '30%'}}
               mode="contained"
               onPress={props.handleSubmit}
-              //height = '30'
               compact = 'true'
               >
               Submit
             </Button>
             
             <Button
-              style = {{width : '20%'}}
+              style = {{width : '30%'}}
               mode="outlined"
               onPress={() => {
                 wastename1 = props.values.wasteName
                 weight1 = props.values.weight
-                addReview({wasteName : wastename1,weight : weight1})
+                if(wastename1 === 'Scrap Metal')
+                  price_per_kg = '10'
+                if(wastename1 === 'Newspaper')
+                  price_per_kg = '20'
+                if(wastename1 === 'Plastic')
+                  price_per_kg = '30'
+                addReview({wasteName : wastename1,weight : weight1,price_per_kg : price_per_kg})
                 console.log(props.values)                
                 settingModalOpen(true)
-                
                 props.values.wasteName = "Scrap Metal"
                 props.values.weight = ""
-                
-                
-
               }}
               //height = '30'
               compact = 'true'
@@ -113,8 +119,11 @@ const styles = StyleSheet.create({
   },
   buttons: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems : 'center'
-
+    justifyContent: 'space-between',
+    alignItems : 'stretch',
+    position : 'absolute',
+    top : 500,
+    paddingLeft : 30
+    // left : 0
   }
 });

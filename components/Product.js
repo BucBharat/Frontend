@@ -3,7 +3,7 @@ import { withNavigation } from '@react-navigation/compat';
 import { StyleSheet, Dimensions, Image, TouchableNativeFeedback , TouchableWithoutFeedback} from 'react-native';
 import { Block, Text, theme } from 'galio-framework';
 import CardDetails from '../screens/CardDetails'
-
+import { material } from 'react-native-typography'
 // import materialTheme from '../constants/Theme';
 
 const { width } = Dimensions.get('screen');
@@ -32,8 +32,10 @@ class Product extends React.Component {
          {/* <TouchableWithoutFeedback onPress={() => <CardDetails product={product}/>}> */}
          {/* <TouchableNativeFeedback onPress={() => this.props.navigation.navigate('CardDetails')}> */}
           <Block flex space="between" style={styles.productDescription}>
-            <Text size={14} style={styles.productTitle}>waste Category : {product.wasteName}</Text>
-            <Text size={12} muted={!priceColor} color={priceColor}>weight : {product.weight}</Text>
+            <Text style={styles.blueTitle}>{product.wasteName}</Text>
+            {/* <Text size={12} muted={!priceColor} color={priceColor}>weight : {product.weight}</Text> */}
+            <Text style={styles.contrastBlueTitle}>price/kg : {product.price_per_kg}</Text>
+            <Text style={styles.contrastBlueTitle}>weight : {product.weight}</Text>
           </Block>
           {/* </TouchableNativeFeedback> */}
         </TouchableWithoutFeedback>
@@ -89,4 +91,12 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     elevation: 2,
   },
+  blueTitle: {
+    ...material.titleObject,
+    color: '#560CCE'
+  },
+  contrastBlueTitle : {
+    ...material.titleObject,
+    color: '#1e90ff'
+  }
 });

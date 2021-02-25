@@ -81,7 +81,21 @@ const CardDetails = ({navigation}) => {
             <Text style={styles.blueTitle}>Weight(in Kgs) : </Text>
             <Text style={styles.contrastBlueTitle}>{product.weight}</Text>
             </View>
-            <Text>{product.key}</Text>
+            <View style={{flexDirection : 'row'}}>
+            <Text style={styles.blueTitle}>Price/Kg : </Text>
+              {/* {product.wasteName === 'Scrap Metal' ? <Text style={styles.contrastBlueTitle}>10</Text> : null
+              }
+              {product.wasteName === 'Plastic' ? <Text style={styles.contrastBlueTitle}>20</Text> : null
+              }
+              {product.wasteName === 'Newspaper' ? <Text style={styles.contrastBlueTitle}>10</Text> : null
+              } */}
+            <Text style={styles.contrastBlueTitle}>{product.price_per_kg}</Text>
+            </View>
+            <View style={{flexDirection : 'row'}}>
+            <Text style={styles.blueTitle}>Resultant Price : </Text>
+            <Text style={styles.contrastBlueTitle}>{(parseFloat(product.weight)*product.price_per_kg).toFixed(2)}</Text>
+            </View>
+            {/* <Text>{product.key}</Text> */}
             <View style={{justifyContent:'center',alignItems:'center'}}>
             <Button mode="contained" style={{width : '20%'}} onPress={() => {
                 console.log("Edit Button Clicked")
@@ -137,5 +151,5 @@ const styles = StyleSheet.create({
 // update the database here itself instead of sending data back to main myItems page
 
 // To be done
-// 1> Styling of Text
-// 2> Edit Button
+// 1> Styling of Text(completed)
+// 2> Edit Button(completed)
