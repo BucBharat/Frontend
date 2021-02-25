@@ -4,7 +4,7 @@ import { StyleSheet, Dimensions, Image, TouchableNativeFeedback , TouchableWitho
 import { Block, Text, theme } from 'galio-framework';
 import CardDetails from '../screens/CardDetails'
 import { material } from 'react-native-typography'
-// import materialTheme from '../constants/Theme';
+import theme1 from '../core/theme';
 
 const { width } = Dimensions.get('screen');
 

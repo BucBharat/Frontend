@@ -1,4 +1,5 @@
 import { DefaultTheme } from 'react-native-paper'
+import { material } from 'react-native-typography'
 
 export const theme = {
   ...DefaultTheme,
@@ -9,4 +10,12 @@ export const theme = {
     secondary: '#414757',
     error: '#f13a59',
   },
+  blueTitle: {
+    ...material.titleObject,
+    color: '#560CCE'
+  },
+  contrastBlueTitle : {
+    ...material.titleObject,
+    color: '#1e90ff'
+  }
 }

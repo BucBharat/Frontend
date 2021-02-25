@@ -1,5 +1,4 @@
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-
 import React, { useState } from 'react';
 import {
 	StyleSheet,
@@ -20,6 +19,7 @@ import {Block} from 'galio-framework';
 import { MaterialIcons } from '@expo/vector-icons';
 import Background from '../components/Background'
 import Product from '../components/Product'
+import { FAB } from 'react-native-paper';
 
 import {
 	Icon
@@ -94,10 +94,11 @@ export default function MyItems({navigation}) {
 		<Modal visible={modalOpen} animationType='slide' >
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View style={styles.modalContent}>
-            <MaterialIcons 
-              name='close'
-              size={24} 
-              style={{...styles.modalToggle, ...styles.modalClose}} 
+            <FAB 
+              icon='close'
+            //   size={24} 
+            //  style={{...styles.modalToggle, ...styles.modalClose}} 
+			style = {styles.fabTop}
               onPress={() => setModalOpen(false)}  
             />
             <AddItem  addReview={addReview} settingModalOpen={settingModalOpen}/>
@@ -117,13 +118,18 @@ export default function MyItems({navigation}) {
 						)}
 					/>
 				</Block>
-                <MaterialIcons
+                {/* <MaterialIcons
 				reverse 
                 name='add' 
 				size={24} 
 				style={styles.modalToggle}
-				onPress={() => setModalOpen(true)}  />
+				onPress={() => setModalOpen(true)}  /> */}
 
+				<FAB
+					icon="plus"
+					style={styles.fab}
+					onPress={() => setModalOpen(true)}
+				/>
 
 			{/* <Button
               style = {{width : '40%',justifyContent : 'center', alignItems:'center'}}
@@ -175,10 +181,10 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center',
 		// marginBottom: 10,
-		borderWidth: 3,
+		//borderWidth: 3,
 		borderColor: 'white',
 		padding: 10,
-		borderRadius: 30,
+		//borderRadius: 30,
 		alignSelf: 'center',
 		backgroundColor : '#99738E',
 	  },
@@ -187,6 +193,7 @@ const styles = StyleSheet.create({
 		marginBottom: 0,
 	  },
 	  modalContent: {
+
 		flex: 1,
 	  },
 	  button: {
@@ -202,5 +209,16 @@ const styles = StyleSheet.create({
 		fontWeight: "bold",
 		textAlign: "center"
 	  },
+	  fab: {
+		position: 'absolute',
+		margin: 16,
+		right: 5,
+		bottom: 5,
+	  },
+	  fabTop : {		// position: 'absolute',
+		margin: 16,
+		left: 5,
+		top : 5,
+		alignSelf : 'center'
+	  }
 });
-
