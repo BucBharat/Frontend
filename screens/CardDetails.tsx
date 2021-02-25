@@ -1,20 +1,95 @@
-import React from 'react'
-import {View,Text} from 'react-native'
+import React,{useState} from 'react'
+import {View,Text,Modal,TouchableWithoutFeedback,StyleSheet,Keyboard} from 'react-native'
 import Button from '../components/Button'
+import { MaterialIcons } from '@expo/vector-icons';
+import {Formik} from 'formik'
+import { material } from 'react-native-typography'
+import Header from '../components/Header'
+import TextInput from '../components/TextInput'
 
 const CardDetails = ({navigation}) => {
+    const [modalOpen,setModalOpen] = useState(false)
     const product  = navigation.getParam('product');
     return (
-        <View style = {{paddingTop : 30}}>
-            <Text>Details of the Item</Text>
-            <Text>{product.wasteName}</Text>
-            <Text>{product.weight}</Text>
+        <View style = {{paddingTop : 30,...styles.container}}>
+        <Modal visible={modalOpen} animationType='slide' >
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <View style={styles.modalContent}>
+            <MaterialIcons 
+              name='close'
+              size={24} 
+              style={{...styles.modalToggle, ...styles.modalClose}} 
+              onPress={() => setModalOpen(false)}  
+            />
+            
+            <View style={{alignItems : 'center'}}>
+            <Header>Update Weight</Header>
+            </View>
+            <Formik
+                initialValues={{weight:product.weight}}  //set the weight to the weight currently present
+                onSubmit = {
+                    (values,actions) => {
+                    actions.resetForm(); 
+                    product.weight = values.weight
+                    console.log(values)
+                    setModalOpen(false)
+                    }
+                }
+            >
+            {(props) => (
+            <View>
+                <TextInput 
+                style = {{padding : 10,borderWidth : 1,borderColor : '#ddd',fontSize : 18,borderRadius : 6}}
+                label = 'Weight in kg'
+                placeholder='Weight in kg'
+                onChangeText = {props.handleChange('weight')}
+                value = {props.values.weight}
+                keyboardType = "numeric"
+            />
+            <View style={styles.buttons}>
+            <Button
+              style = {{width : '30%'}}
+              mode="outlined"
+              onPress={() => setModalOpen(false)}
+              compact = 'true'
+              >
+              Cancel
+            </Button>
+            <Button
+              style = {{width : '30%'}}
+              mode="contained"
+              onPress={props.handleSubmit}
+              compact = 'true'
+              >
+              Submit
+            </Button>
+            </View>
+            </View>
+            )}
+            </Formik>
+          </View>
+        </TouchableWithoutFeedback>
+      	</Modal>
+            <View style={{alignItems : 'center'}}>
+            <Header>Details of the Item</Header>
+            </View>
+            <View style={{flexDirection : 'row'}}>
+            <Text style={styles.blueTitle}>Waste Category : </Text>
+            <Text style={styles.contrastBlueTitle}>{product.wasteName}</Text>
+            </View>
+            <View style={{flexDirection : 'row'}}>
+            <Text style={styles.blueTitle}>Weight(in Kgs) : </Text>
+            <Text style={styles.contrastBlueTitle}>{product.weight}</Text>
+            </View>
             <Text>{product.key}</Text>
-            <Button mode="contained" onPress={() => {
+            <View style={{justifyContent:'center',alignItems:'center'}}>
+            <Button mode="contained" style={{width : '20%'}} onPress={() => {
                 console.log("Edit Button Clicked")
+                setModalOpen(true)
             }}>
             Edit
             </Button>
+            </View>
             
         </View>
     )
@@ -22,6 +97,43 @@ const CardDetails = ({navigation}) => {
 
 export default CardDetails
 
+const styles = StyleSheet.create({
+    container: {
+		flex: 1,
+		marginBottom: 0,
+	},
+    modalToggle: {
+		justifyContent: 'center',
+		alignItems: 'center',
+		// marginBottom: 10,
+		borderWidth: 3,
+		borderColor: 'white',
+		padding: 10,
+		borderRadius: 30,
+		alignSelf: 'center',
+		backgroundColor : '#99738E',
+	  },
+	  modalClose: {
+		marginTop: 20,
+		marginBottom: 0,
+	  },
+      modalContent: {
+		flex: 1,
+	  },
+      buttons: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        alignItems : 'center'
+      },
+      blueTitle: {
+        ...material.titleObject,
+        color: '#560CCE'
+      },
+      contrastBlueTitle : {
+        ...material.titleObject,
+        color: '#1e90ff'
+      }
+})
 // update the database here itself instead of sending data back to main myItems page
 
 // To be done
