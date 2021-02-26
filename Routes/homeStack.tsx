@@ -10,6 +10,9 @@ import LoginScreen from '../screens/LoginScreen'
 import CardDetails from '../screens/CardDetails'
 import Product from '../components/Product'
 import { Dashboard, ForgotPasswordScreen } from '../screens';
+import BuyerOrSeller from '../screens/BuyerOrSeller'
+import Market from '../screens/Market';
+import BuyProduct from '../screens/BuyProduct'
 
 
 const screens = {
@@ -48,7 +51,25 @@ const screens = {
         navigationOptions: {
             headerShown: false
         }
-    }
+    },
+    BuyerOrSeller : {
+        screen: BuyerOrSeller,
+        navigationOptions: {
+            headerShown: false
+        }
+    },
+    Market : {
+        screen : Market,
+        navigationOptions: {
+            headerShown: false
+        }
+    },
+    BuyProduct : {
+        screen: BuyProduct,
+        navigationOptions: {
+            headerShown: false
+        }
+    },
     
 }
 

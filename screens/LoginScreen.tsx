@@ -27,7 +27,10 @@ const LoginScreen = ({ navigation }) => {
     //   index: 0,
     //   routes: [{ name: 'Dashboard' }],
     // })
-    navigation.navigate('MyItems')
+
+    
+    // navigation.navigate('MyItems')
+    navigation.navigate('BuyerOrSeller')
   }
 
   return (
