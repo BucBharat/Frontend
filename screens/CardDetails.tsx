@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import {View,Text,Modal,TouchableWithoutFeedback,StyleSheet,Keyboard} from 'react-native'
+import {View,Text,Modal,TouchableWithoutFeedback,StyleSheet,Keyboard,Image} from 'react-native'
 import Button from '../components/Button'
 import { MaterialIcons } from '@expo/vector-icons';
 import {Formik} from 'formik'
@@ -70,31 +70,50 @@ const CardDetails = ({navigation}) => {
           </View>
         </TouchableWithoutFeedback>
       	</Modal>
+            
             <View style={{alignItems : 'center'}}>
-            <Header>Details of the Item</Header>
+            <Header>Item</Header>
             </View>
-            <View style={{flexDirection : 'row'}}>
-            <Text style={styles.blueTitle}>Waste Category : </Text>
+            <View style={[styles.imageStyles]}>
+            <Image source={require('../assets/images/favicon.png')} style={styles.image} />
+            </View>
+            <View
+              style={{
+              borderBottomColor: 'black',
+              borderBottomWidth: 1,
+              }}
+            />
+            <Text>{'\n'}</Text>
+            <View style={{justifyContent : 'center',alignItems : 'center'}}>
             <Text style={styles.contrastBlueTitle}>{product.wasteName}</Text>
             </View>
+            <Text>{'\n'}</Text>
             <View style={{flexDirection : 'row'}}>
-            <Text style={styles.blueTitle}>Weight(in Kgs) : </Text>
-            <Text style={styles.contrastBlueTitle}>{product.weight}</Text>
+            {/* <Text style={styles.blueTitle}>Resultant Price : </Text> */}
+            <Text style={material.title}> Rs </Text>
+            <Text style={[material.title,styles.contrastBlueTitle]}>{(parseFloat(product.weight)*product.price_per_kg).toFixed(2)} </Text>
+            {/* <View style={{paddingTop : '10'}}> */}
+            <Text style={material.body2}>( Price/Kg : </Text>
+            <Text style={material.body2}>{product.price_per_kg} )</Text>
+            {/* </View> */}
             </View>
-            <View style={{flexDirection : 'row'}}>
+
+            <View style={{flexDirection : 'row',alignItems : 'center',}}>
+            <Text style={[material.subheading,styles.blueColor]}>Quantity  </Text>
+            <Text style={[material.subheading,styles.contrastBlueColor]}>{product.weight} Kgs </Text>
+            {/* <View style={{justifyContent:'center',alignItems:'center'}}> */}
+            <Button mode="outline" style={{width : '50%'}} onPress={() => {
+                console.log("Edit Button Clicked")
+                setModalOpen(true)
+            }}>
+            update weight
+            </Button>
+            {/* </View> */}
+            </View>
+            {/* <View style={{flexDirection : 'row'}}>
             <Text style={styles.blueTitle}>Price/Kg : </Text>
-              {/* {product.wasteName === 'Scrap Metal' ? <Text style={styles.contrastBlueTitle}>10</Text> : null
-              }
-              {product.wasteName === 'Plastic' ? <Text style={styles.contrastBlueTitle}>20</Text> : null
-              }
-              {product.wasteName === 'Newspaper' ? <Text style={styles.contrastBlueTitle}>10</Text> : null
-              } */}
             <Text style={styles.contrastBlueTitle}>{product.price_per_kg}</Text>
-            </View>
-            <View style={{flexDirection : 'row'}}>
-            <Text style={styles.blueTitle}>Resultant Price : </Text>
-            <Text style={styles.contrastBlueTitle}>{(parseFloat(product.weight)*product.price_per_kg).toFixed(2)}</Text>
-            </View>
+            </View> */}
             {/* <Text>{product.key}</Text> */}
             <View style={{justifyContent:'center',alignItems:'center'}}>
             <Button mode="contained" style={{width : '20%'}} onPress={() => {
@@ -145,8 +164,28 @@ const styles = StyleSheet.create({
       },
       contrastBlueTitle : {
         ...material.titleObject,
-        color: '#1e90ff'
-      }
+        color: '#1e90ff',
+        fontWeight : 'bold'
+      },
+      blueColor: {
+        color: '#560CCE',
+        fontWeight : 'bold'
+      },
+      contrastBlueColor : {
+        color: '#1e90ff',
+        fontWeight : 'bold'
+      },
+      imageStyles : {
+        justifyContent : 'center',
+        alignItems : 'center'
+      },
+      image: {
+
+        width: 200,
+        height: 200,
+
+
+    }
 })
 // update the database here itself instead of sending data back to main myItems page
 

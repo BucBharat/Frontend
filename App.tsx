@@ -7,19 +7,16 @@ import ItemDetails from './components/ItemDetails';
 import MyItems from './screens/MyItems';
 import AddTodo from './screens/AddItem'
 import {Alert} from 'react-native';
-import Navigator from './Routes/homeStack'
+// import Navigator from './Routes/homeStack'
+import Navigator from './Routes/drawer'
 
 
-// const submitHandler = () => {
-		
-// 	Alert.alert('Inside submitHandler()');
-// }
+
 
 
 
 export default function App() {
 	return (
 		<Navigator />
-		// <AddTodo submitHandler={submitHandler} />
 	);
 }
