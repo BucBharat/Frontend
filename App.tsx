@@ -10,7 +10,7 @@ import {Alert} from 'react-native';
 // import Navigator from './Routes/homeStack'
 import Navigator from './Routes/drawer'
 
-
+import Search from './components/Search'
 
 
 
@@ -18,5 +18,6 @@ import Navigator from './Routes/drawer'
 export default function App() {
 	return (
 		<Navigator />
+		// <Search />
 	);
 }

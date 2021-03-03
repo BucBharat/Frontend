@@ -6,6 +6,8 @@ import {Block} from 'galio-framework';
 import Product from '../components/Product'
 import MarketProduct from '../components/MarketProduct'
 import MarketItem from '../screens/MarketItem'
+import Search from '../components/Search'
+
 
 export default function Market({navigation}){
 
@@ -23,6 +25,7 @@ export default function Market({navigation}){
     return (
         <View>
         <MyHeader title="Market"/>
+        <Search />
         {/* <View style={styles.content}> */}
 				{/* <Block flex> */}
                 <View style={{flexDirection : 'column',top : 0}}>
