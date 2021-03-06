@@ -1,11 +1,13 @@
 import React,{useState} from 'react'
-import {View,Text,Modal,TouchableWithoutFeedback,StyleSheet,Keyboard,Image} from 'react-native'
+import {View,Text,Modal,TouchableWithoutFeedback,StyleSheet,Keyboard,Image,TouchableNativeFeedback} from 'react-native'
 import Button from '../components/Button'
 import { MaterialIcons } from '@expo/vector-icons';
 import {Formik} from 'formik'
 import { material } from 'react-native-typography'
 import Header from '../components/Header'
 import TextInput from '../components/TextInput'
+import { FAB } from 'react-native-paper';
+import {FontAwesome} from '@expo/vector-icons'
 
 const CardDetails = ({navigation}) => {
     const [modalOpen,setModalOpen] = useState(false)
@@ -15,10 +17,17 @@ const CardDetails = ({navigation}) => {
         <Modal visible={modalOpen} animationType='slide' >
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View style={styles.modalContent}>
-            <MaterialIcons 
+            {/* <MaterialIcons 
               name='close'
               size={24} 
               style={{...styles.modalToggle, ...styles.modalClose}} 
+              onPress={() => setModalOpen(false)}  
+            /> */}
+            <FAB 
+              icon='close'
+              //   size={24} 
+              //  style={{...styles.modalToggle, ...styles.modalClose}} 
+			        style = {styles.fabTop}
               onPress={() => setModalOpen(false)}  
             />
             
@@ -102,12 +111,24 @@ const CardDetails = ({navigation}) => {
             <Text style={[material.subheading,styles.blueColor]}>Quantity  </Text>
             <Text style={[material.subheading,styles.contrastBlueColor]}>{product.weight} Kgs </Text>
             {/* <View style={{justifyContent:'center',alignItems:'center'}}> */}
-            <Button mode="outline" style={{width : '50%'}} onPress={() => {
+            <TouchableNativeFeedback onPress={() => {
                 console.log("Edit Button Clicked")
                 setModalOpen(true)
             }}>
-            update weight
+            <View style={{width : '60%',alignItems:'center',flexDirection:'row'}} >
+            <FontAwesome name='sort'
+              size={24} />
+            <Button mode="outline" 
+              // style={{width : '70%'}} 
+              // style={{justifyContent : 'left'}}
+              onPress={() => {
+                console.log("Edit Button Clicked")
+                setModalOpen(true)
+            }}>
+            <Text style={[material.title,styles.blueColor]}>update weight</Text>
             </Button>
+            </View>
+            </TouchableNativeFeedback>
             {/* </View> */}
             </View>
             {/* <View style={{flexDirection : 'row'}}>
@@ -115,14 +136,14 @@ const CardDetails = ({navigation}) => {
             <Text style={styles.contrastBlueTitle}>{product.price_per_kg}</Text>
             </View> */}
             {/* <Text>{product.key}</Text> */}
-            <View style={{justifyContent:'center',alignItems:'center'}}>
+            {/* <View style={{justifyContent:'center',alignItems:'center'}}>
             <Button mode="contained" style={{width : '20%'}} onPress={() => {
                 console.log("Edit Button Clicked")
                 setModalOpen(true)
             }}>
             Edit
             </Button>
-            </View>
+            </View> */}
             
         </View>
     )
@@ -185,7 +206,13 @@ const styles = StyleSheet.create({
         height: 200,
 
 
-    }
+    },
+    fabTop : {		// position: 'absolute',
+		margin: 16,
+		left: 5,
+		top : 5,
+		alignSelf : 'center'
+	  }
 })
 // update the database here itself instead of sending data back to main myItems page
 

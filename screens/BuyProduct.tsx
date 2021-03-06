@@ -26,7 +26,7 @@ const BuyProduct = ({navigation}) => {
               icon='close'
             //   size={24} 
             //  style={{...styles.modalToggle, ...styles.modalClose}} 
-			style = {styles.fabTop}
+			        style = {styles.fabTop}
               onPress={() => setModalOpen(false)}  
             />
             <View style={styles.aligningCenter}>
