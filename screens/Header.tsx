@@ -14,12 +14,16 @@ import React from 'react';
 import {Header} from 'react-native-elements'
 
 const MyHeader = (props) => {
+	
+	const notificationHandler = () => {
+		Alert.alert('notifications')
+	}
   return (
     
 		<Header
-  		leftComponent={{ icon: 'menu', color: '#fff' }}
+  		leftComponent={{ icon: 'menu', color: '#fff', onPress: () => Alert.alert('Drawer') }}
   		centerComponent={{ text: props.title, style: {fontSize: 20, color: '#fff' } }}
-  		rightComponent={{ icon: 'home', color: '#fff' }}
+  		rightComponent={{ icon: 'notifications', color: '#fff', onPress: () => notificationHandler() }}
       backgroundColor='#560CCE'
       barStyle='light-content'
       containerStyle = {styles.header}
