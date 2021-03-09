@@ -11,6 +11,6 @@ const rootDrawerNavigator = createDrawerNavigator({
         screen : checkPage,
     }
 })
-
+//check
 
 export default createAppContainer(rootDrawerNavigator)
