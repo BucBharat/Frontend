@@ -162,12 +162,12 @@ const BuyProduct = ({navigation}) => {
             <View style={styles.aligningCenter}>
             <Text style={styles.blueTitle}>Requesting Seller...</Text>
             <Text style={styles.contrastBlueTitle}>Notification sent</Text>
-            <Button mode="contained" style={{width : '40%'}} onPress={() => {
+            <Button mode="contained" style={{width : '50%'}} onPress={() => {
                 // console.log('payment page')
                 setModalOpen(false)
                 navigation.navigate('PaymentPage')
             }}>
-                Payment
+                Notification
             </Button>
             </View>
           </View>
@@ -194,10 +194,10 @@ const BuyProduct = ({navigation}) => {
             <Text style={styles.contrastBlueTitle}>{(parseFloat(product.weight)*product.price_per_kg).toFixed(2)}</Text>
             </View>
             <View style={{justifyContent:'center',alignItems:'center'}}>
-            <Button mode="contained" style={{width : '20%'}} onPress={() => {
+            <Button mode="contained" style={{width : '50%'}} onPress={() => {
                 setModalOpen(true)
             }}>
-                Buy
+                Make Request
             </Button>
             </View>
             

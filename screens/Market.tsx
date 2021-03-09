@@ -7,6 +7,7 @@ import Product from '../components/Product'
 import MarketProduct from '../components/MarketProduct'
 import MarketItem from '../screens/MarketItem'
 import Search from '../components/Search'
+import HeaderBuyer from '../screens/HeaderBuyer'
 
 
 export default function Market({navigation}){
@@ -24,7 +25,7 @@ export default function Market({navigation}){
     ]
     return (
         <View>
-        <MyHeader title="Market"/>
+        <HeaderBuyer title="Market" navigation = {navigation}/>
         <Search />
         {/* <View style={styles.content}> */}
 				{/* <Block flex> */}
