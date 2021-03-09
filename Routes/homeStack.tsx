@@ -98,6 +98,7 @@ import Market from '../screens/Market';
 import BuyProduct from '../screens/BuyProduct'
 import PaymentPage from '../screens/PaymentPage'
 import AmountPaid from '../screens/AmountPaid'
+import SellerNotification from '../screens/SellerNotification'
 
 
 const screens = {
@@ -171,6 +172,16 @@ const screens = {
         // name : 'Payment Page',
         navigationOptions: {
             headerShown: false
+        }
+    },
+    SellerNotification : {
+        screen: SellerNotification,
+        // title : 'Payment Page',
+        // name : 'Payment Page',
+        navigationOptions: {
+            title : 'Notifications',
+            headerTitleStyle: { alignSelf: 'center' },
+            // headerShown: false
         }
     }
 }

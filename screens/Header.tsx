@@ -12,11 +12,12 @@ import {
 } from 'react-native';
 import React from 'react';
 import {Header} from 'react-native-elements'
+import Navigation from '../navigation';
 
 const MyHeader = (props) => {
 	
 	const notificationHandler = () => {
-		Alert.alert('notifications')
+		props.navigation.navigate('SellerNotification')
 	}
   return (
     

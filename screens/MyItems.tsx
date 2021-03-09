@@ -107,7 +107,7 @@ export default function MyItems({navigation}) {
       	</Modal>
 
 
-			<MyHeader title="My Items"/>
+			<MyHeader title="My Items" navigation={navigation}/>
 			<View style={styles.content}>
 			{/* <Header>My Items</Header> */}
 				<Block flex>
